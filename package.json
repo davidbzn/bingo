@@ -1,0 +1,14 @@
+{
+  "name": "bingo",
+  "version": "1.0.0",
+  "description": "Jogo bingo",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^17.0.0"
+  }
+}
