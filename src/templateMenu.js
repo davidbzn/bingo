@@ -1,7 +1,7 @@
-// TemplateMenu
+const { ipcMain } = require('electron');
 
 module.exports = {
-    geraMenuPrincipal(){
+    geraMenuPrincipal(win){
         let template = [
             {
                 label: 'JOGO',
@@ -40,17 +40,26 @@ module.exports = {
                 label: 'CONFIGURAÇÕES',
                 submenu:[
                     {
-                        label: 'Delay'
+                        label: 'Delay',
+                        click: () => {
+                            ipcMain.emit("show-delay");
+                        },
                     },
                     {
                         label: 'Rank nome',
                         type: 'checkbox',
-                        checked: true
+                        checked: true,
+                        click: (item) => {
+                            win.send('state-rank-name', item.checked);
+                        },
                     },
                     {
                         label: 'Rank bolas',
                         type: 'checkbox',
-                        checked: true
+                        checked: true,
+                        click: (item) => {
+                            win.send('state-rank-ball', item.checked);
+                        },
                     },
                     {
                         label: 'Voz',
@@ -61,9 +70,11 @@ module.exports = {
                         label: 'Aviso vitória',
                         type: 'checkbox',
                         checked: true
+                    },                    {
+                        type: 'separator' 
                     },
                     {
-                        type: 'separator' 
+                        label: 'Mostrar configurações'
                     },
                     {
                         label: 'Fullscreen',

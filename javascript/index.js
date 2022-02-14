@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('electron');
+const $ = require('jQuery');
 
 var isPaused = true;
 var called_ball = "";
@@ -41,4 +43,18 @@ $( "#status_game" ).click(function() {
         $( "#status_game i" ).addClass("fas fa-play");
         isPaused = true;
     }
+});
+
+ipcRenderer.on('state-rank-name', (event, checked) => {
+    if(checked)
+        $(".rank_name").show();
+    else    
+        $(".rank_name").hide();
+});
+
+ipcRenderer.on('state-rank-ball', (event, checked) => {
+    if(checked)
+        $(".badge").show();
+    else    
+        $(".badge").hide();
 });
