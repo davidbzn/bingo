@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 const templateMenu = require('./templateMenu');
+const config = require('./config');
 
 let mainWindow = null;
 
@@ -35,19 +36,32 @@ app.on('window-all-closed', () => {
 
 delayWindow = null;
 ipcMain.on('show-delay', ()=>{
+
+    let delay =  config.getDelaySaved();
+
     if(delayWindow == null){
         delayWindow = new BrowserWindow({
             width: 500,
-            height: 250,
+            height: 235,
+            title: ':: Alteração Delay ::',
             alwaysOnTop: true,
             autoHideMenuBar: true,
-            resizable: false
+            resizable: false,
+            webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false
+            }
         });
 
         delayWindow.on('closed', ()=> {
             delayWindow = null;
         });
     }
-    console.log(__dirname);
-    delayWindow.loadURL(`file://${__dirname}/../delay.html`);
+    delayWindow.loadURL(`file://${__dirname}/../delay.html?delay=${delay}`);
+});
+
+ipcMain.on('altera-delay', (event, novoDelay) => {
+    config.alteraDelay(novoDelay);
+    delayWindow.close();
+    mainWindow.send('novo-delay', novoDelay);
 });

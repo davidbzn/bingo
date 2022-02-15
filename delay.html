@@ -1,35 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html> 
+  
 <head>
-    <meta charset="UTF-8">
-    <title>Configurando o Delay</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+      
+<style> 
+
+*{
+    font-family: sans-serif;
+}
+    
+/* Assign full width inputs*/ 
+input[type=text], 
+input[type=password] { 
+    text-transform: uppercase;
+    width: 100%; 
+    padding: 12px 40px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border: 1px solid #ccc; 
+    box-sizing: border-box; 
+} 
+    
+/* Set a style for the buttons*/ 
+button { 
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 14px 20px; 
+    margin: 8px 0; 
+    border: none; 
+    cursor: pointer; 
+    width: 100%; 
+} 
+
+/* Set a hover effect for the button*/ 
+button:hover { 
+    opacity: 0.8; 
+} 
+
+/* Set extra style for the cancel button*/ 
+.container { 
+    padding: 16px; 
+} 
+
+.fontuser {
+    position: relative;
+}
+    
+.fontuser i{
+    position: absolute;
+    left: 15px;
+    top: 40px;
+    color: gray;
+}
+    
+.fontpassword {
+    position: relative;
+}
+    
+.fontpassword i{
+    position: absolute;
+    left: 15px;
+    top: 40px;
+    color: gray;
+}
+
+</style> 
+
 </head>
-
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-<link rel="stylesheet" href="css/index.css">
-
-<body>
-
-<style>
-
-body{
-    margin: 0px;
-    padding: 50px !important;
-}
-
-#save-delay{
-    padding: 0 10px !important;
-}
-    
-</style>
-
-<div class="input-group mt-3">
-    <input type="text" class="form-control" placeholder="Entre com o delay">
-    <div class="input-group-append">
-        <button class="btn btn-primary" type="button" id="save-delay">Salvar</button>
-    </div>
-</div>
-    
-</body>
+  
+<body> 
+    <div class="container"> 
+        <div class="fontuser">
+            <label><b>Entre com o novo delay</b></label> 
+            <input type="text" id="input-delay" name="delay"  onkeypress="return isNumber(event)" required> 
+            <i class="fa fa-clock-o fa-lg"></i>
+        </div>
+        <i>** 1000 = 1 segundo</i>
+        <button type="button" id="salvar">Salvar</button> 
+    </div> 
+</body>  
 </html>
+
+<script src="javascript/delay.js"></script>
