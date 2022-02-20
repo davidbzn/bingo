@@ -65,8 +65,8 @@ ipcRenderer.on('state-rank-ball', (event, checked) => {
 });
 
 ipcRenderer.on('novo-delay', (event, novoDelay) => {
-    console.log("novo delay", novoDelay);
+    //console.log("novo delay", novoDelay);
     clearInterval(run)
     delay = novoDelay;
     run = window.setInterval(bingo, delay);
-});
+}); 

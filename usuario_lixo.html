@@ -1,0 +1,123 @@
+<!DOCTYPE html> 
+<html> 
+  
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+      
+<style> 
+
+*{
+    font-family: sans-serif;
+}
+    
+/* Assign full width inputs*/ 
+input[type=text]{ 
+    text-transform: uppercase !important;
+    width: 100% !important; 
+    padding: 12px 40px !important; 
+    margin: 8px 0 !important; 
+    display: inline-block !important; 
+    border: 1px solid #ccc !important; 
+    box-sizing: border-box !important; 
+} 
+    
+/* Set a style for the buttons*/ 
+button { 
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 14px 20px; 
+    margin: 8px 0; 
+    border: none; 
+    cursor: pointer; 
+    width: 100%; 
+} 
+
+/* Set a hover effect for the button*/ 
+button:hover { 
+    opacity: 0.8; 
+} 
+
+/* Set extra style for the cancel button*/ 
+._container { 
+    padding: 16px; 
+} 
+
+.fontuser {
+    position: relative !important;
+}
+    
+.fontuser i{
+    position: absolute !important;
+    left: 15px !important;
+    top: 55px !important;
+    color: gray !important;
+}
+
+.table{
+    margin-top: 20px;
+}
+
+table th, td {
+   text-align: center; 
+}
+
+
+</style> 
+
+</head>
+  
+<body> 
+    <div class="_container"> 
+        
+        <p id="msg"></p>
+
+        <div class="fontuser">
+            <label><b>Entre com o novo usuário</b></label> 
+            <input type="text" id="input-user" name="user" required> 
+            <i class="fa fa-user fa-lg"></i>
+        </div>
+        <i>** Entre com o nome completo</i>
+        <button type="button" id="salvar">Salvar</button> 
+
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome completo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark Francisco</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob Macedo</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry Jerry</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Mark Zuck</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Jacob Amaral</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Larry Lopes</td>
+              </tr>
+            </tbody>
+          </table>
+
+    </div> 
+
+</body>  
+</html>
+
+<script src="javascript/user.js"></script>
