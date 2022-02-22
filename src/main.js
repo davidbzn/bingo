@@ -60,6 +60,30 @@ ipcMain.on('show-delay', ()=>{
     delayWindow.loadURL(`file://${__dirname}/../delay.html?delay=${delay}`);
 });
 
+userWindow = null;
+ipcMain.on('show-user', ()=>{
+
+    if(userWindow == null){
+        userWindow = new BrowserWindow({
+            width: 1024,
+            height: 768,
+            title: ':: USUÁRIOS ::',
+            alwaysOnTop: true,
+            autoHideMenuBar: true,
+            resizable: true,
+            webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false
+            }
+        });
+
+        userWindow.on('closed', ()=> {
+            userWindow = null;
+        });
+    }
+    userWindow.loadURL(`file://${__dirname}/../user.html`);
+});
+
 ipcMain.on('altera-delay', (event, novoDelay) => {
     config.alteraDelay(novoDelay);
     delayWindow.close();

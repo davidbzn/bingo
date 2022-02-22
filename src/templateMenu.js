@@ -31,7 +31,10 @@ module.exports = {
                 ]
             },
             {
-                label: 'USUÁRIOS'
+                label: 'USUÁRIOS',
+                click: () => {
+                    ipcMain.emit("show-user");
+                },
             },
             {
                 label: 'CARTELAS'
