@@ -18,18 +18,27 @@ $(document).ready(function(){
         $(this).tooltip('dispose');
     });
     var actions = $("table td:last-child").html();
-
+    console.log(actions);
     // Append table with add row form on add new button click
     $(".add-new").click(function(){
         $(this).attr("disabled", "disabled");
         var index = $("table tbody tr:last-child").index();
         var newId = parseInt($("table tr:last-child td:first-child").text()) + 1;
         
-        var row = '<tr>' +
-            '<td>'+newId+'</td>' +
-            '<td><input type="text" style="text-transform: uppercase" class="form-control" name="nome" id="nome"></td>' +
-            '<td>' + actions + '</td>' +
-        '</tr>';
+        if(isNaN(newId)){  
+            $("table tbody").html("");   
+            index = -1;
+            newId = 1;
+            actions = '<a class="add" title="Adicionar" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>' +
+                      '<a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>' +
+                      '<a href="#" class="delete" title="Deletar" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>' ;     
+        }    
+
+        var row =   '<tr>' +
+                        '<td>'+newId+'</td>' +
+                        '<td><input type="text" style="text-transform: uppercase" class="form-control" name="nome" id="nome"></td>' +
+                        '<td>' + actions + '</td>' +
+                    '</tr>';
         $("table").append(row);		
         $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
         $('[data-toggle="tooltip"]').tooltip({

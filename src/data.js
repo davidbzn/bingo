@@ -24,7 +24,7 @@ module.exports = {
 
         let users = this.getUsersSaved();
         let exist = false;
-        let index;
+        let index = null;  
         for (var i = 0; i < users.length; i++) {
             if(id == users[i].id)
                 index = i;
@@ -36,7 +36,13 @@ module.exports = {
         }
 
         if(!exist){
-            users[index].name = userName;
+            if(index === null){
+                users.push({id: id, name: userName});
+                console.log('add-teste');
+            }else{
+                console.log('edit-teste');
+                users[index].name = userName;
+            }            
             fs.writeFileSync(path.resolve(`__dirname/../data/`, 'users.json'), JSON.stringify(users,  undefined, 4));
             return 0;
         }else{
