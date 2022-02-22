@@ -38,9 +38,7 @@ module.exports = {
         if(!exist){
             if(index === null){
                 users.push({id: id, name: userName});
-                console.log('add-teste');
-            }else{
-                console.log('edit-teste');
+            }else{        
                 users[index].name = userName;
             }            
             fs.writeFileSync(path.resolve(`__dirname/../data/`, 'users.json'), JSON.stringify(users,  undefined, 4));
