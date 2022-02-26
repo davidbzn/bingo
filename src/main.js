@@ -84,6 +84,30 @@ ipcMain.on('show-user', ()=>{
     userWindow.loadURL(`file://${__dirname}/../user.html`);
 });
 
+cardWindow = null;
+ipcMain.on('show-card', ()=>{
+
+    if(cardWindow == null){
+        cardWindow = new BrowserWindow({
+            width: 1024,
+            height: 768,
+            title: ':: CARTELAS ::',
+            alwaysOnTop: true,
+            autoHideMenuBar: true,
+            resizable: true,
+            webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false
+            }
+        });
+
+        cardWindow.on('closed', ()=> {
+            cardWindow = null;
+        });
+    }
+    cardWindow.loadURL(`file://${__dirname}/../card.html`);
+});
+
 ipcMain.on('altera-delay', (event, novoDelay) => {
     config.alteraDelay(novoDelay);
     delayWindow.close();

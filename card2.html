@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Cartelas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {
+    color: #566787;
+    background: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+}
+.table-responsive {
+    margin: 30px 0;
+}
+.table-wrapper {
+    min-width: 768px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    min-height: 665px;
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+    min-width: 100%;
+}
+.table-title h2 {
+    margin: 8px 0 0;
+    font-size: 22px;
+}
+.search-box {
+    position: relative;        
+    float: right;
+}
+.search-box input {
+    height: 34px;
+    border-radius: 20px;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+}
+.search-box input:focus {
+    border-color: #3FBAE4;
+}
+.search-box i {
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 19px;
+    top: 8px;
+    left: 10px;
+}
+
+table th:first-child{
+    width: 15vw;
+}
+
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+table.table td a.add i {
+    cursor: pointer;
+}
+
+table.table td:last-child {
+    width: 100px;
+}
+table.table td a {
+    color: #a0a5b1;
+    display: inline-block;
+    margin: 0 5px;
+}
+table.table td a.view {
+    color: #03A9F4;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}    
+.pagination {
+    float: right;
+    margin: 0 0 5px;
+}
+.pagination li a {
+    border: none;
+    font-size: 95%;
+    width: 30px;
+    height: 30px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 30px !important;
+    text-align: center;
+    padding: 0;
+}
+.pagination li a:hover {
+    color: #666;
+}	
+.pagination li.active a {
+    background: #03A9F4;
+}
+.pagination li.active a:hover {        
+    background: #0397d6;
+}
+.pagination li.disabled i {
+    color: #ccc;
+}
+.pagination li i {
+    font-size: 16px;
+    padding-top: 6px
+}
+.hint-text {
+    float: left;
+    margin-top: 6px;
+    font-size: 95%;
+}   
+.add-new{
+    position: relative;        
+    float: right;
+    margin-bottom: 10px;
+}
+
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.table-title .add-new i {
+    margin-right: 4px;
+}
+
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}
+table.table td .add {
+    display: none;
+}
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+
+.secundColumn{
+    background: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    height: 100%;
+    width: 100%;
+    border: 0px;
+    display: inline-grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(9, 0.5fr);
+    
+}
+
+
+.item{
+    border: 2px solid rgb(158, 158, 158);
+    display: flex;
+    background-color: darkgrey;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 2vw;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Controle de <b>Cartelas</b></h2></div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Nova cartela</button>
+                        <!-- <div class="search-box">
+                            <i class="material-icons">&#xE8B6;</i>
+                            <input type="text" style="text-transform: uppercase" class="form-control user-search" placeholder="Procurar&hellip;">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="balls-opetions">
+                <div class="secundColumn">
+                    <div class="item">01</div>
+                    <div class="item">02</div>
+                    <div class="item">03</div>
+                    <div class="item">04</div>
+                    <div class="item">05</div>
+                    <div class="item">06</div>
+                    <div class="item">07</div>
+                    <div class="item">08</div>
+                    <div class="item">09</div>
+                    <div class="item">10</div>
+                    <div class="item">11</div>
+                    <div class="item">12</div>
+                    <div class="item">13</div>
+                    <div class="item">14</div>
+                    <div class="item">15</div>
+                    <div class="item">16</div>
+                    <div class="item">17</div>
+                    <div class="item">18</div>
+                    <div class="item">19</div>
+                    <div class="item">20</div>
+                    <div class="item">21</div>
+                    <div class="item">22</div>
+                    <div class="item">23</div>
+                    <div class="item">24</div>
+                    <div class="item">25</div>
+                    <div class="item">26</div>
+                    <div class="item">27</div>
+                    <div class="item">28</div>
+                    <div class="item">29</div>
+                    <div class="item">30</div>
+                    <div class="item">31</div>
+                    <div class="item">32</div>
+                    <div class="item">33</div>
+                    <div class="item">34</div>
+                    <div class="item">35</div>
+                    <div class="item">36</div>
+                    <div class="item">37</div>
+                    <div class="item">38</div>
+                    <div class="item">39</div>
+                    <div class="item">40</div>
+                    <div class="item">41</div>
+                    <div class="item">42</div>
+                    <div class="item">43</div>
+                    <div class="item">44</div>
+                    <div class="item">45</div>
+                    <div class="item">46</div>
+                    <div class="item">47</div>
+                    <div class="item">48</div>
+                    <div class="item">49</div>
+                    <div class="item">50</div>
+                    <div class="item">51</div>
+                    <div class="item">52</div>
+                    <div class="item">53</div>
+                    <div class="item">54</div>
+                    <div class="item">55</div>
+                    <div class="item">56</div>
+                    <div class="item">57</div>
+                    <div class="item">58</div>
+                    <div class="item">59</div>
+                    <div class="item">60</div>
+                    <div class="item">61</div>
+                    <div class="item">62</div>
+                    <div class="item">63</div>
+                    <div class="item">64</div>
+                    <div class="item">65</div>
+                    <div class="item">66</div>
+                    <div class="item">67</div>
+                    <div class="item">68</div>
+                    <div class="item">69</div>
+                    <div class="item">70</div>
+                    <div class="item">71</div>
+                    <div class="item">72</div>
+                    <div class="item">73</div>
+                    <div class="item">74</div>
+                    <div class="item">75</div>
+                    <div class="item">76</div>
+                    <div class="item">77</div>
+                    <div class="item">78</div>
+                    <div class="item">79</div>
+                    <div class="item">80</div>
+                    <div class="item">81</div>
+                    <div class="item">82</div>
+                    <div class="item">83</div>
+                    <div class="item">84</div>
+                    <div class="item">85</div>
+                    <div class="item">86</div>
+                    <div class="item">87</div>
+                    <div class="item">88</div>
+                    <div class="item">89</div>
+                    <div class="item">90</div>
+                </div>
+            </div>
+
+        </div>
+    </div>  
+</div>   
+</body>
+</html>
+
+<script>window.$ = window.jQuery = require('jquery');</script>
+<script>require('popper.js');</script>
+<script>require('bootstrap');</script>
+<script src="javascript/card.js"></script>

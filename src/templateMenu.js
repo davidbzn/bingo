@@ -37,7 +37,10 @@ module.exports = {
                 },
             },
             {
-                label: 'CARTELAS'
+                label: 'CARTELAS',
+                click: () => {
+                    ipcMain.emit("show-card");
+                },
             },
             {
                 label: 'CONFIGURAÇÕES',
@@ -83,10 +86,16 @@ module.exports = {
                         label: 'Fullscreen',
                         type: 'checkbox',
                         role: 'togglefullscreen' 
-                    },{
+                    },
+                    {
                         label: 'Developer',
                         role: 'toggledevtools',
                         accelerator: 'F12'
+                    },
+                    {
+                        label: 'Refresh',
+                        role: 'reload',
+                        accelerator: 'F5'
                     }
                 ]
             }
